@@ -17,10 +17,12 @@ class Index extends Component {
     componentDidMount = () => {
         //get actual data
         getJobs().then(obj => {
-
+            var tempObj = obj.data.jobs.filter((job, index) => {
+                if (index < 10) return job;
+            })
             this.setState({
-                jobList: obj.data.jobs,
-                orignialJobList: obj.data.jobs
+                jobList: tempObj,
+                orignialJobList: tempObj
             })
         })
 
