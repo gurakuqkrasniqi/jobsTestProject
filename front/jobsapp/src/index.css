@@ -13,10 +13,16 @@ code {
 }
 
 .card-width-margin {
+
   width: 18rem;
   margin: 5px;
   min-height: 10vh !important;
   max-height: 25vh !important;
+
+}
+
+.spinner {
+  margin: 0 auto;
 }
 
 .footer-class {
@@ -32,6 +38,10 @@ code {
   width: 100%;
   position: fixed;
   bottom: 0;
+}
+
+.m-0-auto {
+  margin: 0 auto;
 }
 
 @media only screen and (max-width:600px) {

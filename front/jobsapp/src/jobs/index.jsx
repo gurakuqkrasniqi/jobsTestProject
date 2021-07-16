@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import obj from './dummyData';
 import { Spinner, Button, FormControl } from 'react-bootstrap'
-import CardJob from './components/card';
-import Carousel from 'react-elastic-carousel';
-import Footer from './components/footer.jsx'
+import CardJob from '../components/card';
+import Footer from '../components/footer.jsx'
+import getJobs from '../services/jobsService';
 
 class Index extends Component {
     constructor(props) {
@@ -17,15 +16,14 @@ class Index extends Component {
     //get all data as soon as it is mounted
     componentDidMount = () => {
         //get actual data
-        var objList = obj.jobs.filter((job, index) => {
-            if (index < 10) {
-                return job;
-            }
+        getJobs().then(obj => {
+
+            this.setState({
+                jobList: obj.data,
+                orignialJobList: obj.data
+            })
         })
-        this.setState({
-            jobList: objList,
-            orignialJobList: objList
-        })
+
     }
 
 
@@ -84,10 +82,10 @@ class Index extends Component {
                             <Button className='h-50' onClick={this.showLastSevenDays}> Show last 7 days published jobs</Button>
                         </div>
                     </div>
-                    <div className='d-flex flex-wrap justify-content-around w-100'>
+                    <div className='d-flex flex-wrap w-100 justify-content-center'>
                         {/*if its loading data, show spinner*/}
                         {this.state.jobList.length == 0 ?
-                            <Spinner animation="border" />
+                            <Spinner animation="border" className='spinner' />
                             :
                             this.state.jobList.map((job, index) => {
                                 return (
