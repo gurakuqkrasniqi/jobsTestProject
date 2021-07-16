@@ -3,7 +3,7 @@ import axios from 'axios';
 const path = "http://localhost:4000/api/jobs";
 
 const getJobs = async () => {
-    return await axios.post(axios.post('https://www.zippia.com/api/jobs', {
+    return await axios.post('https://www.zippia.com/api/jobs', {
         companySkills: true,
         dismissedListingHashes: [],
         fetchJobDesc: true,
@@ -11,7 +11,7 @@ const getJobs = async () => {
         locations: [],
         numJobs: 20,
         previousListingHashes: []
-    }));
+    });
 }
 
 export default getJobs;
