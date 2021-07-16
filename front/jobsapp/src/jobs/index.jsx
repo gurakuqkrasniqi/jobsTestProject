@@ -19,8 +19,8 @@ class Index extends Component {
         getJobs().then(obj => {
 
             this.setState({
-                jobList: obj.data,
-                orignialJobList: obj.data
+                jobList: obj.data.jobs,
+                orignialJobList: obj.data.jobs
             })
         })
 
